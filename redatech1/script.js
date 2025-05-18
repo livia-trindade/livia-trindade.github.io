@@ -58,30 +58,20 @@ class CorretorRedacao {
     return textoFormatado.trim();
   }
 
-  async corrigirRedacao() {
-  const tema = document.getElementById('tema').value;
-  const redacao = document.getElementById('redacao').value;
-  const resultadoDiv = document.getElementById('resultado');
-
-  this.toggleLoading(true);
-
+  async function corrigirRedacao() {
   try {
-    const prompt = this.criarPrompt(tema, redacao);
-
     const response = await fetch('https://api-redacao-enem.vercel.app/api/corrigir', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({ prompt: "Texto da redação..." })
     });
-
+    
+    if (!response.ok) throw new Error('Erro na API');
+    
     const data = await response.json();
-    resultadoDiv.innerText = this.formatarResposta(data.resposta);
-
+    console.log(data.data.resposta);
   } catch (error) {
-    resultadoDiv.innerText = "Erro ao conectar com o servidor.";
-    console.error(error);
-  } finally {
-    this.toggleLoading(false);
+    console.error("Erro:", error);
   }
 }
 
