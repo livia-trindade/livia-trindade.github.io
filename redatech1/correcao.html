@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correção de Redações ENEM</title>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+<header>
+
+  <div class="header-content">
+    <img src="imagens/Logo_redatech_c.png" alt="Logo Redatech" class="logo">
+  </div>
+</header>
+
+  <h1>Correção de Redações ENEM</h1>
+
+  <div class="form-group">
+    <div class="form-field">
+    <label for="tema">Tema da Redação:</label>
+    <input type="text" id="tema" required aria-required="true" style="width: 100%;">
+  </div>
+
+  <div class="form-field">
+    <label for="redacao">Sua Redação:</label>
+    <textarea id="redacao" required aria-required="true"></textarea>
+  </div>
+  </div>
+  <div>
+    <button onclick="corretor.corrigirRedacao()">Corrigir Redação</button>
+    <button onclick="corretor.baixarPDF()">Baixar PDF</button>
+    <span id="loading" class="loading">Processando...</span>
+  </div>
+
+  <h2>Resultado:</h2>
+  <pre id="resultado">Aguardando correção...</pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
